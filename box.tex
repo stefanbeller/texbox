@@ -1,0 +1,20 @@
+
+
+\newcommand{\BOX}[3]
+{
+    \path (#1) coordinate (COORDINATE);
+
+    \path (COORDINATE) ++(-.30,-.30) coordinate (tprect1);
+    \path (COORDINATE) ++( .30, .30) coordinate (tprect2);
+    \draw (COORDINATE)  node[draw=none,fill=none]{#3};
+    \draw (tprect1)  rectangle (tprect2);
+
+    \path (COORDINATE) ++( 0,  0.35) coordinate (#2_IN);
+    \path (COORDINATE) ++( 0, -0.25) coordinate (#2_OUT);
+
+
+    %\path (COORDINATE) ++( 0,  0.20) coordinate (tpinline1);
+    %\path (COORDINATE) ++( 0, -0.20) coordinate (tpoutline1);
+    %\draw [->, thick] (#2_IN) -- (tpinline1);
+    %\draw [- , thick] (tpoutline1) -- (#2_OUT);
+}

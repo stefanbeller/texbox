@@ -1,0 +1,30 @@
+
+
+\newcommand{\CONNECT}[2]
+{
+    \draw [-, thick] (#1) -- (#2);
+}
+
+\newcommand{\CONNECTVH}[2]
+{
+%   \draw (0,10)  node[draw=none,fill=none]{ #1 };
+%   \draw (0,20)  node[draw=none,fill=none]{ #2 };
+    \draw
+      let
+        \p1=(#1),
+        \p2=(#2)
+      in
+        [-, thick] (\x1, \y1) -- (\x1, \y2) -- (\x2, \y2);
+}
+
+\newcommand{\CONNECTHV}[2]
+{
+%   \draw (0,10)  node[draw=none,fill=none]{ #1 };
+%   \draw (0,20)  node[draw=none,fill=none]{ #2 };
+    \draw
+      let
+        \p1=(#1),
+        \p2=(#2)
+      in
+        [-, thick] (\x1, \y1) -- (\x2, \y1) -- (\x2, \y2);
+}
