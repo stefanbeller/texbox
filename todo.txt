@@ -1,0 +1,30 @@
+
+
+BOX mit Params und 4 standardfälle, boxlänge als param?
+
+CIRCLETHING umbenannt in kreistierchen
+add
+mul
+
+mux?
+
+decider
+
+
+
+CONNECT
+CONNECTHV
+CONNECTVH
+point
+
+SWITCH
+SWITCHUP
+GROUP
+
+resistor
+capacitor
+inductor
+trafo
+poti
+
+spannungspfeile

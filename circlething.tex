@@ -1,0 +1,90 @@
+% 3 std args, ins and outs with N S W E !  #6 is text inside
+\newcommand{\CIRCLETHING}[5]
+{
+    \path (#1) coordinate (COORDINATE);
+    \draw (COORDINATE)  circle (.1);
+
+    \path (COORDINATE) ++( 0, 0.3) coordinate (INN#2);
+    \path (COORDINATE) ++( 0,-0.3) coordinate (INS#2);
+    \path (COORDINATE) ++(-0.3, 0) coordinate (INW#2);
+    \path (COORDINATE) ++( 0.3, 0) coordinate (INE#2);
+
+    \path (COORDINATE) ++( 0,  0.1) coordinate (lineN);
+    \path (COORDINATE) ++( 0, -0.1) coordinate (lineS);
+    \path (COORDINATE) ++( -0.1, 0) coordinate (lineW);
+    \path (COORDINATE) ++(  0.1, 0) coordinate (lineE);
+
+    \path (COORDINATE) ++( -0.15, 0.2) coordinate (INNW);
+    \path (COORDINATE) ++(  0.2, 0.15) coordinate (INNE);
+    \path (COORDINATE) ++( -0.2,-0.15) coordinate (INSW);
+    \path (COORDINATE) ++(  0.15,-0.2) coordinate (INSE);
+
+    \draw (COORDINATE) node[draw=none,fill=none]{ #5 };
+
+    \findchars[q]{#3}{N};
+    \ifnum \theresult>0
+        \draw [->, thick] (INN#2) -- (lineN);
+    \fi
+    \findchars[q]{#3}{S};
+    \ifnum \theresult>0
+        \draw [->, thick] (INS#2) -- (lineS);
+    \fi
+    \findchars[q]{#3}{W};
+    \ifnum \theresult>0
+        \draw [->, thick] (INW#2) -- (lineW);
+    \fi
+    \findchars[q]{#3}{E};
+    \ifnum \theresult>0
+        \draw [->, thick] (INE#2) -- (lineE);
+    \fi
+    % subtraktion durch kleinbuchstaben
+    \findchars[q]{#3}{n};
+    \ifnum \theresult>0
+        \draw [->, thick] (INN#2) -- (lineN);
+        \draw (INNW) node[draw=none,fill=none]{ - };
+    \fi
+    \findchars[q]{#3}{s};
+    \ifnum \theresult>0
+        \draw [->, thick] (INS#2) -- (lineS);
+        \draw (INSE) node[draw=none,fill=none]{ - };
+    \fi
+    \findchars[q]{#3}{w};
+    \ifnum \theresult>0
+        \draw [->, thick] (INW#2) -- (lineW);
+        \draw (INSW) node[draw=none,fill=none]{ - };
+    \fi
+    \findchars[q]{#3}{e};
+    \ifnum \theresult>0
+        \draw [->, thick] (INE#2) -- (lineE);
+        \draw (INNE) node[draw=none,fill=none]{ - };
+    \fi
+
+    \findchars[q]{#4}{N};
+    \ifnum \theresult>0
+        \draw [-, thick] (INN#2) -- (lineN);
+    \fi
+    \findchars[q]{#4}{S};
+    \ifnum \theresult>0
+        \draw [-, thick] (INS#2) -- (lineS);
+    \fi
+    \findchars[q]{#4}{W};
+    \ifnum \theresult>0
+        \draw [-, thick] (INW#2) -- (lineW);
+    \fi
+    \findchars[q]{#4}{E};
+    \ifnum \theresult>0
+        \draw [-, thick] (INE#2) -- (lineE);
+    \fi
+}
+
+% 3 std args, ins and outs with N S W E !
+\newcommand{\ADD}[4]
+{
+    \CIRCLETHING{#1}{#2}{#3}{#4}{+}
+}
+
+% 3 std args, ins and outs with N S W E !
+\newcommand{\MUL}[4]
+{
+    \CIRCLETHING{#1}{#2}{#3}{#4}{$\cdot$}
+}

@@ -1,0 +1,177 @@
+
+
+\input{cirlething.tex}
+
+\newcommand{\BOX}[3]
+{
+    \path (#1) coordinate (COORDINATE);
+
+    \path (COORDINATE) ++(-.20,-.20) coordinate (tprect1);
+    \path (COORDINATE) ++( .20, .20) coordinate (tprect2);
+    \draw (COORDINATE)  node[draw=none,fill=none]{#3};
+    \draw (tprect1)  rectangle (tprect2);
+
+    \path (COORDINATE) ++( 0,  0.35) coordinate (IN#2);
+    \path (COORDINATE) ++( 0, -0.25) coordinate (OUT#2);
+
+    \path (COORDINATE) ++( 0,  0.20) coordinate (tpinline1);
+    \path (COORDINATE) ++( 0, -0.20) coordinate (tpoutline1);
+    \draw [->, thick] (IN#2) -- (tpinline1);
+    \draw [- , thick] (tpoutline1) -- (OUT#2);
+}
+
+
+\newcommand{\FACTOR}[3]
+{
+
+}
+
+
+
+\newcommand{\CONNECT}[2]
+{
+    \draw [-, thick] (#1) -- (#2);
+}
+
+\newcommand{\CONNECTVH}[2]
+{
+%   \draw (0,10)  node[draw=none,fill=none]{ #1 };
+%   \draw (0,20)  node[draw=none,fill=none]{ #2 };
+    \draw
+      let
+        \p1=(#1),
+        \p2=(#2)
+      in
+        [-, thick] (\x1, \y1) -- (\x1, \y2) -- (\x2, \y2);
+}
+
+\newcommand{\CONNECTHV}[2]
+{
+%   \draw (0,10)  node[draw=none,fill=none]{ #1 };
+%   \draw (0,20)  node[draw=none,fill=none]{ #2 };
+    \draw
+      let
+        \p1=(#1),
+        \p2=(#2)
+      in
+        [-, thick] (\x1, \y1) -- (\x2, \y1) -- (\x2, \y2);
+}
+
+\newcommand{\SWITCHUP}[3]
+{
+    \path (#1) coordinate (COORDINATE);
+    \path (COORDINATE) ++( 0,  0.15) coordinate (POS1);
+    \path (COORDINATE) ++( 0, -0.15) coordinate (POS2);
+    \path (COORDINATE) ++( -0.1, 0.145) coordinate (POS3);
+    \path (COORDINATE) ++( -0.1, 0) coordinate (TEXT);
+    \path (COORDINATE) ++( 0,  0.2) coordinate (IN#2);
+    \path (COORDINATE) ++( 0, -0.2) coordinate (OUT#2);
+
+    \draw [- , thick] (POS1) -- (IN#2);
+    \draw [- , thick] (POS2) -- (OUT#2);
+    \draw [- , thick] (POS2) -- (POS3);
+    \draw (TEXT) node[draw=none,fill=none, style=left]{ #3 };
+
+}
+
+\newcommand{\SWITCH}[3]
+{
+    \path (#1) coordinate (COORDINATE);
+    \path (COORDINATE) ++(  0.15, 0) coordinate (POS1);
+    \path (COORDINATE) ++( -0.15, 0) coordinate (POS2);
+    \path (COORDINATE) ++(  0.145, 0.1) coordinate (POS3);
+    \path (COORDINATE) ++( 0, -0.1) coordinate (TEXT);
+    \path (COORDINATE) ++(  0.2,0) coordinate (IN#2);
+    \path (COORDINATE) ++( -0.2,0) coordinate (OUT#2);
+
+    \draw [- , thick] (POS1) -- (IN#2);
+    \draw [- , thick] (POS2) -- (OUT#2);
+    \draw [- , thick] (POS2) -- (POS3);
+    \draw (TEXT) node[draw=none,fill=none, style=left]{ #3 };
+
+}
+
+\newcommand{\GROUP}[3]
+%4 koordinaten: x1,y1,x2,y2, "text"
+{
+
+    \draw
+      let
+        \p1=(#1),
+        \p2=(#2)
+      in
+        [#3, thick] (\x1, \y1) -- (\x2, \y1) -- (\x2, \y2) -- (\x1, \y2) -- (\x1, \y1);
+}
+
+
+\newcommand{\MUX}[2]
+{
+    \path (#1) coordinate (COORDINATE);
+
+    \path (COORDINATE) ++(-0.25,  0.5) coordinate (UL);
+    \path (COORDINATE) ++( 0.25,  0.5) coordinate (UR);
+    \path (COORDINATE) ++(-0.25, -0.5) coordinate (LL);
+    \path (COORDINATE) ++( 0.25, -0.5) coordinate (LR);
+
+    \path (COORDINATE) ++(0.25, 0) coordinate (_OUT#2);
+    \path (_OUT#2) ++(0.5,0) coordinate (OUT#2);
+    \path (COORDINATE) ++(0,0) coordinate (TEXTPOS);
+
+    \path (COORDINATE) ++(0, -0.75) coordinate (IND#2);
+    \path (COORDINATE) ++(-0.5, 0.3) coordinate (IN0#2);
+    \path (COORDINATE) ++(-0.5, 0.2) coordinate (IN1#2);
+    \path (COORDINATE) ++(-0.5, 0.1) coordinate (IN2#2);
+    \path (COORDINATE) ++(-0.5, 0.0) coordinate (IN3#2);
+    \path (COORDINATE) ++(-0.5,-0.1) coordinate (IN4#2);
+    \path (COORDINATE) ++(-0.5,-0.2) coordinate (IN5#2);
+    \path (COORDINATE) ++(-0.5,-0.3) coordinate (IN6#2);
+
+    \path (COORDINATE) ++(0, -0.5) coordinate (_IND#2);
+    \path (COORDINATE) ++(-0.25, 0.3) coordinate (_IN0#2);
+    \path (COORDINATE) ++(-0.25, 0.2) coordinate (_IN1#2);
+    \path (COORDINATE) ++(-0.25, 0.1) coordinate (_IN2#2);
+    \path (COORDINATE) ++(-0.25, 0.0) coordinate (_IN3#2);
+    \path (COORDINATE) ++(-0.25,-0.1) coordinate (_IN4#2);
+    \path (COORDINATE) ++(-0.25,-0.2) coordinate (_IN5#2);
+    \path (COORDINATE) ++(-0.25,-0.3) coordinate (_IN6#2);
+
+    \draw [-> , thick] (IND#2) -- (_IND#2);
+    \draw [- , thick] (IN0#2) -- (_IN0#2);
+    \draw [- , thick] (IN1#2) -- (_IN1#2);
+    \draw [- , thick] (IN2#2) -- (_IN2#2);
+    \draw [- , thick] (IN3#2) -- (_IN3#2);
+    \draw [- , thick] (IN4#2) -- (_IN4#2);
+    \draw [- , thick] (IN5#2) -- (_IN5#2);
+    \draw [- , thick] (IN6#2) -- (_IN6#2);
+    %\draw [- , thick] (IN7#2) -- (_IN7#2);
+    %\draw [- , thick] (IN8#2) -- (_IN8#2);
+
+    \draw [- , thick] (UL) -- (UR);
+    \draw [- , thick] (UL) -- (LL);
+    \draw [- , thick] (LR) -- (UR);
+    \draw [- , thick] (LR) -- (LL);
+
+    \draw [- , thick] (_OUT#2) -- (OUT#2);
+    \draw (TEXTPOS) node[draw=none,fill=none, rotate=90]{ MUX };
+}
+
+\newcommand{\DECIDER}[3]
+{
+    \path (#1) coordinate (COORDINATE);
+
+    \path (COORDINATE) ++(-.5,-.3) coordinate (tprect1);
+    \path (COORDINATE) ++( .5, .3) coordinate (tprect2);
+    \draw (COORDINATE)  node[draw=none,fill=none]{#3};
+    \draw (tprect1)  rectangle (tprect2);
+
+    \path (COORDINATE) ++( -0.75, 0) coordinate (IN#2);
+    \path (COORDINATE) ++( 0.75, 0) coordinate (OUT#2);
+
+    \path (COORDINATE) ++( -0.5, 0) coordinate (tpinline1);
+    \path (COORDINATE) ++(  0.5, 0) coordinate (tpoutline1);
+    \draw [->, thick] (IN#2) -- (tpinline1);
+    \draw [- , thick] (tpoutline1) -- (OUT#2);
+}
+
+
+
