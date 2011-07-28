@@ -18,8 +18,10 @@
 % this program. If not, see <http://www.gnu.org/licenses/>.
 %
 
-
-% args:
+% Draws a small circle with configurable inputs and outputs from North, South,
+% East and West. Additionally there can be text in the circle.
+%
+% arguments:
 % #1 position as tuple x,y
 % #2 name of object
 % #3 input directions: N, S, W, E, if small letters add minus sign
@@ -108,13 +110,25 @@
     \fi
 }
 
-% 3 std args, ins and outs with N S W E !
+% a plus sign
+%
+% arguments:
+% #1 position as tuple x,y
+% #2 name of object
+% #3 input directions: N, S, W, E, if small letters add minus sign
+% #4 output directions: N, S, W, E
 \newcommand{\ADD}[4]
 {
     \CIRCLETHING{#1}{#2}{#3}{#4}{+}
 }
 
-% 3 std args, ins and outs with N S W E !
+% a multiplication sign
+%
+% arguments:
+% #1 position as tuple x,y
+% #2 name of object
+% #3 input directions: N, S, W, E, if small letters add minus sign
+% #4 output directions: N, S, W, E
 \newcommand{\MUL}[4]
 {
     \CIRCLETHING{#1}{#2}{#3}{#4}{$\cdot$}
