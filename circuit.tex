@@ -39,3 +39,57 @@
     \BOX{#1}{#2}{}{0.6,0.2}{}{WE};
     \draw (#2_OUTN) node[draw=none,fill=none]{ \tiny{#3} };
 }
+
+% arguments
+% #1 coordinates
+% #2 name
+% #3 label
+% capacitor in vertical direction with label to the right
+\newcommand{\CAPACITORV}[3]
+{
+    \path (#1) ++ (0,0.4) coordinate(#2_OUTN);
+    \path (#1) ++ (0,-0.4) coordinate(#2_OUTS);
+    \path (#1) ++ (-0.4,0) coordinate(#2_OUTW);
+    \path (#1) ++ (0.4,0) coordinate(#2_OUTE);
+
+    \path (#1) ++ (-0.2,0.05) coordinate(upperleft);
+    \path (#1) ++ (0.2,0.05) coordinate(upperright);
+    \path (#1) ++ (-0.2,-0.05) coordinate(lowerleft);
+    \path (#1) ++ (0.2,-0.05) coordinate(lowerright);
+    \path (#1) ++ (0,0.05) coordinate(uppermiddle);
+    \path (#1) ++ (0,-0.05) coordinate(lowermiddle);
+
+    \draw (uppermiddle) -- (#2_OUTN);
+    \draw (lowermiddle) -- (#2_OUTS);
+    \draw (upperleft) -- (upperright);
+    \draw (lowerleft) -- (lowerright);
+
+    \draw (#2_OUTE) node[draw=none,fill=none]{ \tiny{#3} };
+}
+
+% arguments
+% #1 coordinates
+% #2 name
+% #3 label
+% capacitor in horizontal direction with label above
+\newcommand{\CAPACITORH}[3]
+{
+    \path (#1) ++ (0,0.4) coordinate(#2_OUTN);
+    \path (#1) ++ (0,-0.4) coordinate(#2_OUTS);
+    \path (#1) ++ (-0.4,0) coordinate(#2_OUTW);
+    \path (#1) ++ (0.4,0) coordinate(#2_OUTE);
+
+    \path (#1) ++ (-0.05,0.2) coordinate(upperleft);
+    \path (#1) ++ (0.05,0.2) coordinate(upperright);
+    \path (#1) ++ (-0.05,-0.2) coordinate(lowerleft);
+    \path (#1) ++ (0.05,-0.2) coordinate(lowerright);
+    \path (#1) ++ (-0.05,0) coordinate(leftmiddle);
+    \path (#1) ++ (0.05,0) coordinate(rightmiddle);
+
+    \draw (#2_OUTW) -- (leftmiddle);
+    \draw (#2_OUTE) -- (rightmiddle);
+    \draw (upperleft) -- (lowerleft);
+    \draw (upperright) -- (lowerright);
+
+    \draw (#2_OUTN) node[draw=none,fill=none]{ \tiny{#3} };
+}

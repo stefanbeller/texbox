@@ -19,11 +19,19 @@
 %
 
 \begin{tikzpicture}
-    \RESISTORV{3,0}{R}{R$_1$}
-    \path(R_OUTN) ++ (-0.5,0) coordinate(plus);
-    \path(R_OUTS) ++ (-0.5,0) coordinate(minus);
-    \OPENCONNECTOR{plus}{P};
-    \OPENCONNECTOR{minus}{M};
-    \CONNECT{R_OUTN}{P_E};
-    \CONNECT{R_OUTS}{M_E};
+    \RESISTORV{2,0.6}{R}{R$_1$}
+    \CAPACITORV{1,0.6}{C}{C$_1$}
+
+    \OPENCONNECTOR{0,0}{P}
+    \OPENCONNECTOR{0,1.2}{M}
+
+    \DOT{1,1.2}{a}
+    \DOT{1,0}{b}
+
+    \CONNECT{R_OUTN}{a}
+    \CONNECT{R_OUTS}{b}
+    \CONNECT{C_OUTS}{b}
+    \CONNECT{C_OUTN}{a}
+    \CONNECT{P_E}{b}
+    \CONNECT{M_E}{a}
 \end{tikzpicture}
