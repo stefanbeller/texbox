@@ -93,3 +93,123 @@
 
     \draw (#2_OUTN) node[draw=none,fill=none]{ \tiny{#3} };
 }
+
+% arguments
+% #1 coordinates
+% #2 name
+% #3 label
+% diode pointing right with label above
+\newcommand{\DIODER}[3]
+{
+    \path (#1) ++ (0.4,0) coordinate(#2_OUTE);
+    \path (#1) ++ (-0.4,0) coordinate(#2_OUTW);
+    \path (#1) ++ (0,0.3) coordinate(#2_OUTN);
+    \path (#1) ++ (0,-0.3) coordinate(#2_OUTS);
+
+
+    \path (#1) ++ (0.1,0) coordinate(right);
+    \path (#1) ++ (0.1,0.1) coordinate(rightup);
+    \path (#1) ++ (0.1,-0.1) coordinate(rightdown);
+    \path (#1) ++ (-0.1,0) coordinate(left);
+    \path (#1) ++ (-0.1,0.1) coordinate(leftup);
+    \path (#1) ++ (-0.1,-0.1) coordinate(leftdown);
+
+    \draw (#2_OUTW) -- (left);
+    \draw (leftup) -- (leftdown);
+    \draw (leftup) -- (right);
+    \draw (leftdown) -- (right);
+    \draw (#2_OUTE) -- (right);
+    \draw (rightup) -- (rightdown);
+
+    \draw (#2_OUTN) node[draw=none,fill=none]{ \tiny{#3} };
+}
+
+% arguments
+% #1 coordinates
+% #2 name
+% #3 label
+% diode pointing left with label above
+\newcommand{\DIODEL}[3]
+{
+    \path (#1) ++ (0.4,0) coordinate(#2_OUTE);
+    \path (#1) ++ (-0.4,0) coordinate(#2_OUTW);
+    \path (#1) ++ (0,0.3) coordinate(#2_OUTN);
+    \path (#1) ++ (0,-0.3) coordinate(#2_OUTS);
+
+
+    \path (#1) ++ (0.1,0) coordinate(right);
+    \path (#1) ++ (0.1,0.1) coordinate(rightup);
+    \path (#1) ++ (0.1,-0.1) coordinate(rightdown);
+    \path (#1) ++ (-0.1,0) coordinate(left);
+    \path (#1) ++ (-0.1,0.1) coordinate(leftup);
+    \path (#1) ++ (-0.1,-0.1) coordinate(leftdown);
+
+    \draw (#2_OUTW) -- (left);
+    \draw (leftup) -- (leftdown);
+    \draw (left) -- (rightup);
+    \draw (left) -- (rightdown);
+    \draw (#2_OUTE) -- (right);
+    \draw (rightup) -- (rightdown);
+
+    \draw (#2_OUTN) node[draw=none,fill=none]{ \tiny{#3} };
+}
+
+% arguments
+% #1 coordinates
+% #2 name
+% #3 label
+% diode pointing up with label to the right
+\newcommand{\DIODEU}[3]
+{
+    \path (#1) ++ (0.4,0) coordinate(#2_OUTE);
+    \path (#1) ++ (-0.4,0) coordinate(#2_OUTW);
+    \path (#1) ++ (0,0.3) coordinate(#2_OUTN);
+    \path (#1) ++ (0,-0.3) coordinate(#2_OUTS);
+
+
+    \path (#1) ++ (0,0.1) coordinate(top);
+    \path (#1) ++ (0.1,0.1) coordinate(topright);
+    \path (#1) ++ (0.1,-0.1) coordinate(bottomright);
+    \path (#1) ++ (0,-0.1) coordinate(bottom);
+    \path (#1) ++ (-0.1,0.1) coordinate(topleft);
+    \path (#1) ++ (-0.1,-0.1) coordinate(bottomleft);
+
+    \draw (#2_OUTS) -- (bottom);
+    \draw (bottomleft) -- (bottomright);
+    \draw (bottomleft) -- (top);
+    \draw (bottomright) -- (top);
+    \draw (topleft) -- (topright);
+    \draw (#2_OUTN) -- (top);
+
+    \draw (#2_OUTE) node[draw=none,fill=none]{ \tiny{#3} };
+}
+
+% arguments
+% #1 coordinates
+% #2 name
+% #3 label
+% diode pointing down with label to the right
+\newcommand{\DIODED}[3]
+{
+    \path (#1) ++ (0.4,0) coordinate(#2_OUTE);
+    \path (#1) ++ (-0.4,0) coordinate(#2_OUTW);
+    \path (#1) ++ (0,0.3) coordinate(#2_OUTN);
+    \path (#1) ++ (0,-0.3) coordinate(#2_OUTS);
+
+
+    \path (#1) ++ (0,0.1) coordinate(top);
+    \path (#1) ++ (0.1,0.1) coordinate(topright);
+    \path (#1) ++ (0.1,-0.1) coordinate(bottomright);
+    \path (#1) ++ (0,-0.1) coordinate(bottom);
+    \path (#1) ++ (-0.1,0.1) coordinate(topleft);
+    \path (#1) ++ (-0.1,-0.1) coordinate(bottomleft);
+
+    \draw (#2_OUTS) -- (bottom);
+    \draw (bottomleft) -- (bottomright);
+    \draw (bottom) -- (topright);
+    \draw (bottom) -- (topleft);
+    \draw (topleft) -- (topright);
+    \draw (#2_OUTN) -- (top);
+
+    \draw (#2_OUTE) node[draw=none,fill=none]{ \tiny{#3} };
+}
