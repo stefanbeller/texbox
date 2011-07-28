@@ -26,7 +26,7 @@
 % draws a direct connection between given coordinates
 \newcommand{\CONNECT}[2]
 {
-    \draw [-, thick] (#1) -- (#2);
+    \draw [-] (#1) -- (#2);
 }
 
 % arguments
@@ -41,7 +41,7 @@
         \p1=(#1),
         \p2=(#2)
       in
-        [-, thick] (\x1, \y1) -- (\x1, \y2) -- (\x2, \y2);
+        [-] (\x1, \y1) -- (\x1, \y2) -- (\x2, \y2);
 }
 
 % arguments
@@ -56,7 +56,7 @@
         \p1=(#1),
         \p2=(#2)
       in
-        [-, thick] (\x1, \y1) -- (\x2, \y1) -- (\x2, \y2);
+        [-] (\x1, \y1) -- (\x2, \y1) -- (\x2, \y2);
 }
 
 % arguments

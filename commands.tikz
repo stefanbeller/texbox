@@ -20,9 +20,9 @@
     \path (COORDINATE) ++( 0,  0.2) coordinate (IN#2);
     \path (COORDINATE) ++( 0, -0.2) coordinate (OUT#2);
 
-    \draw [- , thick] (POS1) -- (IN#2);
-    \draw [- , thick] (POS2) -- (OUT#2);
-    \draw [- , thick] (POS2) -- (POS3);
+    \draw [-] (POS1) -- (IN#2);
+    \draw [-] (POS2) -- (OUT#2);
+    \draw [-] (POS2) -- (POS3);
     \draw (TEXT) node[draw=none,fill=none, style=left]{ #3 };
 }
 
@@ -36,9 +36,9 @@
     \path (COORDINATE) ++(  0.2,0) coordinate (IN#2);
     \path (COORDINATE) ++( -0.2,0) coordinate (OUT#2);
 
-    \draw [- , thick] (POS1) -- (IN#2);
-    \draw [- , thick] (POS2) -- (OUT#2);
-    \draw [- , thick] (POS2) -- (POS3);
+    \draw [-] (POS1) -- (IN#2);
+    \draw [-] (POS2) -- (OUT#2);
+    \draw [-] (POS2) -- (POS3);
     \draw (TEXT) node[draw=none,fill=none, style=left]{ #3 };
 
 }
@@ -52,7 +52,7 @@
         \p1=(#1),
         \p2=(#2)
       in
-        [#3, thick] (\x1, \y1) -- (\x2, \y1) -- (\x2, \y2) -- (\x1, \y2) -- (\x1, \y1);
+        [#3] (\x1, \y1) -- (\x2, \y1) -- (\x2, \y2) -- (\x1, \y2) -- (\x1, \y1);
 }
 
 
@@ -87,23 +87,23 @@
     \path (COORDINATE) ++(-0.25,-0.2) coordinate (_IN5#2);
     \path (COORDINATE) ++(-0.25,-0.3) coordinate (_IN6#2);
 
-    \draw [-> , thick] (IND#2) -- (_IND#2);
-    \draw [- , thick] (IN0#2) -- (_IN0#2);
-    \draw [- , thick] (IN1#2) -- (_IN1#2);
-    \draw [- , thick] (IN2#2) -- (_IN2#2);
-    \draw [- , thick] (IN3#2) -- (_IN3#2);
-    \draw [- , thick] (IN4#2) -- (_IN4#2);
-    \draw [- , thick] (IN5#2) -- (_IN5#2);
-    \draw [- , thick] (IN6#2) -- (_IN6#2);
-    %\draw [- , thick] (IN7#2) -- (_IN7#2);
-    %\draw [- , thick] (IN8#2) -- (_IN8#2);
+    \draw [->] (IND#2) -- (_IND#2);
+    \draw [-] (IN0#2) -- (_IN0#2);
+    \draw [-] (IN1#2) -- (_IN1#2);
+    \draw [-] (IN2#2) -- (_IN2#2);
+    \draw [-] (IN3#2) -- (_IN3#2);
+    \draw [-] (IN4#2) -- (_IN4#2);
+    \draw [-] (IN5#2) -- (_IN5#2);
+    \draw [-] (IN6#2) -- (_IN6#2);
+    %\draw [-] (IN7#2) -- (_IN7#2);
+    %\draw [-] (IN8#2) -- (_IN8#2);
 
-    \draw [- , thick] (UL) -- (UR);
-    \draw [- , thick] (UL) -- (LL);
-    \draw [- , thick] (LR) -- (UR);
-    \draw [- , thick] (LR) -- (LL);
+    \draw [-] (UL) -- (UR);
+    \draw [-] (UL) -- (LL);
+    \draw [-] (LR) -- (UR);
+    \draw [-] (LR) -- (LL);
 
-    \draw [- , thick] (_OUT#2) -- (OUT#2);
+    \draw [-] (_OUT#2) -- (OUT#2);
     \draw (TEXTPOS) node[draw=none,fill=none, rotate=90]{ MUX };
 }
 
@@ -121,8 +121,8 @@
 
     \path (COORDINATE) ++( -0.5, 0) coordinate (tpinline1);
     \path (COORDINATE) ++(  0.5, 0) coordinate (tpoutline1);
-    \draw [->, thick] (IN#2) -- (tpinline1);
-    \draw [- , thick] (tpoutline1) -- (OUT#2);
+    \draw [->] (IN#2) -- (tpinline1);
+    \draw [-] (tpoutline1) -- (OUT#2);
 }
 
 

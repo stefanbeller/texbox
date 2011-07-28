@@ -56,57 +56,57 @@
 
     \findchars[q]{#3}{N};
     \ifnum \theresult>0
-        \draw [->, thick] (#2_INN) -- (lineN);
+        \draw [->] (#2_INN) -- (lineN);
     \fi
     \findchars[q]{#3}{S};
     \ifnum \theresult>0
-        \draw [->, thick] (#2_INS) -- (lineS);
+        \draw [->] (#2_INS) -- (lineS);
     \fi
     \findchars[q]{#3}{W};
     \ifnum \theresult>0
-        \draw [->, thick] (#2_INW) -- (lineW);
+        \draw [->] (#2_INW) -- (lineW);
     \fi
     \findchars[q]{#3}{E};
     \ifnum \theresult>0
-        \draw [->, thick] (#2_INE) -- (lineE);
+        \draw [->] (#2_INE) -- (lineE);
     \fi
     % subtraktion durch kleinbuchstaben
     \findchars[q]{#3}{n};
     \ifnum \theresult>0
-        \draw [->, thick] (#2_INN) -- (lineN);
+        \draw [->] (#2_INN) -- (lineN);
         \draw (INNW) node[draw=none,fill=none]{ - };
     \fi
     \findchars[q]{#3}{s};
     \ifnum \theresult>0
-        \draw [->, thick] (#2_INS) -- (lineS);
+        \draw [->] (#2_INS) -- (lineS);
         \draw (INSE) node[draw=none,fill=none]{ - };
     \fi
     \findchars[q]{#3}{w};
     \ifnum \theresult>0
-        \draw [->, thick] (#2_INW) -- (lineW);
+        \draw [->] (#2_INW) -- (lineW);
         \draw (INSW) node[draw=none,fill=none]{ - };
     \fi
     \findchars[q]{#3}{e};
     \ifnum \theresult>0
-        \draw [->, thick] (#2_INE) -- (lineE);
+        \draw [->] (#2_INE) -- (lineE);
         \draw (INNE) node[draw=none,fill=none]{ - };
     \fi
 
     \findchars[q]{#4}{N};
     \ifnum \theresult>0
-        \draw [-, thick] (#2_INN) -- (lineN);
+        \draw [-] (#2_INN) -- (lineN);
     \fi
     \findchars[q]{#4}{S};
     \ifnum \theresult>0
-        \draw [-, thick] (#2_INS) -- (lineS);
+        \draw [-] (#2_INS) -- (lineS);
     \fi
     \findchars[q]{#4}{W};
     \ifnum \theresult>0
-        \draw [-, thick] (#2_INW) -- (lineW);
+        \draw [-] (#2_INW) -- (lineW);
     \fi
     \findchars[q]{#4}{E};
     \ifnum \theresult>0
-        \draw [-, thick] (#2_INE) -- (lineE);
+        \draw [-] (#2_INE) -- (lineE);
     \fi
 }
 

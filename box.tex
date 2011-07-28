@@ -66,39 +66,39 @@
 
     \findchars[q]{#5}{N};
     \ifnum \theresult>0
-        \draw [->, thick] (#2_INN) -- (lineN);
+        \draw [->] (#2_INN) -- (lineN);
     \fi
 
     \findchars[q]{#5}{S};
     \ifnum \theresult>0
-        \draw [->, thick] (#2_INS) -- (lineS);
+        \draw [->] (#2_INS) -- (lineS);
     \fi
 
     \findchars[q]{#5}{W};
     \ifnum \theresult>0
-        \draw [->, thick] (#2_INW) -- (lineW);
+        \draw [->] (#2_INW) -- (lineW);
     \fi
 
     \findchars[q]{#5}{E};
     \ifnum \theresult>0
-        \draw [->, thick] (#2_INE) -- (lineE);
+        \draw [->] (#2_INE) -- (lineE);
     \fi
 
     \findchars[q]{#6}{N};
     \ifnum \theresult>0
-        \draw [-, thick] (#2_INN) -- (lineN);
+        \draw [-] (#2_INN) -- (lineN);
     \fi
     \findchars[q]{#6}{S};
     \ifnum \theresult>0
-        \draw [-, thick] (#2_INS) -- (lineS);
+        \draw [-] (#2_INS) -- (lineS);
     \fi
     \findchars[q]{#6}{W};
     \ifnum \theresult>0
-        \draw [-, thick] (#2_INW) -- (lineW);
+        \draw [-] (#2_INW) -- (lineW);
     \fi
     \findchars[q]{#6}{E};
     \ifnum \theresult>0
-        \draw [-, thick] (#2_INE) -- (lineE);
+        \draw [-] (#2_INE) -- (lineE);
     \fi
 }
 
