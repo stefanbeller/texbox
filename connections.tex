@@ -1,3 +1,23 @@
+%
+% connections.tex
+% Copyright 2011, Stefan Beller <stefanbeller@googlemail.com>
+%
+% This file is part of texbox.
+%
+% This program is free software; you can redistribute it and/or modify it
+% under the terms of the GNU General Public License as published by the Free
+% Software Foundation; either version 2 of the License, or (at your option)
+% any later version.
+%
+% This program is distributed in the hope that it will be useful, but WITHOUT
+% ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+% FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+% more details.
+%
+% You should have received a copy of the GNU General Public License along with
+% this program. If not, see <http://www.gnu.org/licenses/>.
+%
+
 
 
 \newcommand{\CONNECT}[2]
@@ -7,8 +27,6 @@
 
 \newcommand{\CONNECTVH}[2]
 {
-%   \draw (0,10)  node[draw=none,fill=none]{ #1 };
-%   \draw (0,20)  node[draw=none,fill=none]{ #2 };
     \draw
       let
         \p1=(#1),
@@ -19,12 +37,15 @@
 
 \newcommand{\CONNECTHV}[2]
 {
-%   \draw (0,10)  node[draw=none,fill=none]{ #1 };
-%   \draw (0,20)  node[draw=none,fill=none]{ #2 };
     \draw
       let
         \p1=(#1),
         \p2=(#2)
       in
         [-, thick] (\x1, \y1) -- (\x2, \y1) -- (\x2, \y2);
+}
+
+\newcommand{\DOT}[2]
+{
+    \filldraw (#1) circle (0.3);
 }

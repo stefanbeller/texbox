@@ -1,13 +1,44 @@
-% 3 std args, ins and outs with N S W E !  #6 is text inside
+%
+% circlething.tex
+% Copyright 2011, Stefan Beller <stefanbeller@googlemail.com>
+%
+% This file is part of texbox.
+%
+% This program is free software; you can redistribute it and/or modify it
+% under the terms of the GNU General Public License as published by the Free
+% Software Foundation; either version 2 of the License, or (at your option)
+% any later version.
+%
+% This program is distributed in the hope that it will be useful, but WITHOUT
+% ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+% FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+% more details.
+%
+% You should have received a copy of the GNU General Public License along with
+% this program. If not, see <http://www.gnu.org/licenses/>.
+%
+
+
+% args:
+% #1 position as tuple x,y
+% #2 name of object
+% #3 input directions: N, S, W, E, if small letters add minus sign
+% #4 output directions: N, S, W, E
+% #5 text
 \newcommand{\CIRCLETHING}[5]
 {
     \path (#1) coordinate (COORDINATE);
     \draw (COORDINATE)  circle (.1);
 
-    \path (COORDINATE) ++( 0, 0.3) coordinate (INN#2);
-    \path (COORDINATE) ++( 0,-0.3) coordinate (INS#2);
-    \path (COORDINATE) ++(-0.3, 0) coordinate (INW#2);
-    \path (COORDINATE) ++( 0.3, 0) coordinate (INE#2);
+    \path (COORDINATE) ++( 0, 0.3) coordinate (#2_INN);
+    \path (COORDINATE) ++( 0,-0.3) coordinate (#2_INS);
+    \path (COORDINATE) ++(-0.3, 0) coordinate (#2_INW);
+    \path (COORDINATE) ++( 0.3, 0) coordinate (#2_INE);
+
+    \path (#2_INN) coordinate (#2_OUTN);
+    \path (#2_INS) coordinate (#2_OUTS);
+    \path (#2_INW) coordinate (#2_OUTW);
+    \path (#2_INE) coordinate (#2_OUTE);
 
     \path (COORDINATE) ++( 0,  0.1) coordinate (lineN);
     \path (COORDINATE) ++( 0, -0.1) coordinate (lineS);
@@ -23,57 +54,57 @@
 
     \findchars[q]{#3}{N};
     \ifnum \theresult>0
-        \draw [->, thick] (INN#2) -- (lineN);
+        \draw [->, thick] (#2_INN) -- (lineN);
     \fi
     \findchars[q]{#3}{S};
     \ifnum \theresult>0
-        \draw [->, thick] (INS#2) -- (lineS);
+        \draw [->, thick] (#2_INS) -- (lineS);
     \fi
     \findchars[q]{#3}{W};
     \ifnum \theresult>0
-        \draw [->, thick] (INW#2) -- (lineW);
+        \draw [->, thick] (#2_INW) -- (lineW);
     \fi
     \findchars[q]{#3}{E};
     \ifnum \theresult>0
-        \draw [->, thick] (INE#2) -- (lineE);
+        \draw [->, thick] (#2_INE) -- (lineE);
     \fi
     % subtraktion durch kleinbuchstaben
     \findchars[q]{#3}{n};
     \ifnum \theresult>0
-        \draw [->, thick] (INN#2) -- (lineN);
+        \draw [->, thick] (#2_INN) -- (lineN);
         \draw (INNW) node[draw=none,fill=none]{ - };
     \fi
     \findchars[q]{#3}{s};
     \ifnum \theresult>0
-        \draw [->, thick] (INS#2) -- (lineS);
+        \draw [->, thick] (#2_INS) -- (lineS);
         \draw (INSE) node[draw=none,fill=none]{ - };
     \fi
     \findchars[q]{#3}{w};
     \ifnum \theresult>0
-        \draw [->, thick] (INW#2) -- (lineW);
+        \draw [->, thick] (#2_INW) -- (lineW);
         \draw (INSW) node[draw=none,fill=none]{ - };
     \fi
     \findchars[q]{#3}{e};
     \ifnum \theresult>0
-        \draw [->, thick] (INE#2) -- (lineE);
+        \draw [->, thick] (#2_INE) -- (lineE);
         \draw (INNE) node[draw=none,fill=none]{ - };
     \fi
 
     \findchars[q]{#4}{N};
     \ifnum \theresult>0
-        \draw [-, thick] (INN#2) -- (lineN);
+        \draw [-, thick] (#2_INN) -- (lineN);
     \fi
     \findchars[q]{#4}{S};
     \ifnum \theresult>0
-        \draw [-, thick] (INS#2) -- (lineS);
+        \draw [-, thick] (#2_INS) -- (lineS);
     \fi
     \findchars[q]{#4}{W};
     \ifnum \theresult>0
-        \draw [-, thick] (INW#2) -- (lineW);
+        \draw [-, thick] (#2_INW) -- (lineW);
     \fi
     \findchars[q]{#4}{E};
     \ifnum \theresult>0
-        \draw [-, thick] (INE#2) -- (lineE);
+        \draw [-, thick] (#2_INE) -- (lineE);
     \fi
 }
 

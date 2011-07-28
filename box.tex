@@ -1,20 +1,108 @@
+%
+% box.tex
+% Copyright 2011, Stefan Beller <stefanbeller@googlemail.com>
+%
+% This file is part of texbox.
+%
+% This program is free software; you can redistribute it and/or modify it
+% under the terms of the GNU General Public License as published by the Free
+% Software Foundation; either version 2 of the License, or (at your option)
+% any later version.
+%
+% This program is distributed in the hope that it will be useful, but WITHOUT
+% ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+% FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+% more details.
+%
+% You should have received a copy of the GNU General Public License along with
+% this program. If not, see <http://www.gnu.org/licenses/>.
+%
 
 
-\newcommand{\BOX}[3]
+% args:
+% #1 position as tuple x,y
+% #2 name of object
+% #3 text
+% #4 size tuple x,y which is overall width/height
+% #5 input directions: N, S, W, E
+% #6 output directions: N, S, W, E
+%
+\newcommand{\BOX}[6]
 {
     \path (#1) coordinate (COORDINATE);
+    \draw (COORDINATE) node[draw=none,fill=none]{ #3 };
 
-    \path (COORDINATE) ++(-.30,-.30) coordinate (tprect1);
-    \path (COORDINATE) ++( .30, .30) coordinate (tprect2);
-    \draw (COORDINATE)  node[draw=none,fill=none]{#3};
-    \draw (tprect1)  rectangle (tprect2);
+    \path let \p1 = (#4) in
+        \pgfextra{\pgfmathparse{0.5*(\x1)}}
+        (\pgfmathresult pt ,0) coordinate (halfwidth);
+    \path let \p1 = (#4) in
+        \pgfextra{\pgfmathparse{0.5*(\x1)}}
+        (-\pgfmathresult pt ,0) coordinate (nhalfwidth);
+    \path let \p1 = (#4) in
+        \pgfextra{\pgfmathparse{0.5*(\y1)}}
+        (0,\pgfmathresult pt ) coordinate (halfheight);
+    \path let \p1 = (#4) in
+        \pgfextra{\pgfmathparse{0.5*(\y1)}}
+        (0,-\pgfmathresult pt ) coordinate (nhalfheight);
 
-    \path (COORDINATE) ++( 0,  0.35) coordinate (#2_IN);
-    \path (COORDINATE) ++( 0, -0.25) coordinate (#2_OUT);
+    \draw (COORDINATE) ++(halfwidth) ++(halfheight) coordinate (cornera);
+    \draw (COORDINATE) ++(nhalfwidth) ++(nhalfheight) coordinate (cornerb);
+    \draw (cornera) rectangle (cornerb);
 
+    \path (COORDINATE) ++(halfheight) coordinate (lineN);
+    \path (COORDINATE) ++(nhalfheight) coordinate (lineS);
+    \path (COORDINATE) ++(nhalfwidth) coordinate (lineW);
+    \path (COORDINATE) ++(halfwidth) coordinate (lineE);
 
-    %\path (COORDINATE) ++( 0,  0.20) coordinate (tpinline1);
-    %\path (COORDINATE) ++( 0, -0.20) coordinate (tpoutline1);
-    %\draw [->, thick] (#2_IN) -- (tpinline1);
-    %\draw [- , thick] (tpoutline1) -- (#2_OUT);
+    \path (lineN) ++( 0, 0.3) coordinate (#2_INN);
+    \path (lineS) ++( 0,-0.3) coordinate (#2_INS);
+    \path (lineW) ++(-0.3, 0) coordinate (#2_INW);
+    \path (lineE) ++( 0.3, 0) coordinate (#2_INE);
+
+    \path (#2_INN) coordinate (#2_OUTN);
+    \path (#2_INS) coordinate (#2_OUTS);
+    \path (#2_INW) coordinate (#2_OUTW);
+    \path (#2_INE) coordinate (#2_OUTE);
+
+    \findchars[q]{#5}{N};
+    \ifnum \theresult>0
+        \draw [->, thick] (#2_INN) -- (lineN);
+    \fi
+
+    \findchars[q]{#5}{S};
+    \ifnum \theresult>0
+        \draw [->, thick] (#2_INS) -- (lineS);
+    \fi
+
+    \findchars[q]{#5}{W};
+    \ifnum \theresult>0
+        \draw [->, thick] (#2_INW) -- (lineW);
+    \fi
+
+    \findchars[q]{#5}{E};
+    \ifnum \theresult>0
+        \draw [->, thick] (#2_INE) -- (lineE);
+    \fi
+
+    \findchars[q]{#6}{N};
+    \ifnum \theresult>0
+        \draw [-, thick] (#2_INN) -- (lineN);
+    \fi
+    \findchars[q]{#6}{S};
+    \ifnum \theresult>0
+        \draw [-, thick] (#2_INS) -- (lineS);
+    \fi
+    \findchars[q]{#6}{W};
+    \ifnum \theresult>0
+        \draw [-, thick] (#2_INW) -- (lineW);
+    \fi
+    \findchars[q]{#6}{E};
+    \ifnum \theresult>0
+        \draw [-, thick] (#2_INE) -- (lineE);
+    \fi
+}
+
+\newcommand{\BOXUP}[3]
+{
+\BOX{#1}
 }

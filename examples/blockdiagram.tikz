@@ -1,10 +1,10 @@
 
 
 
-
 \begin{tikzpicture} 
 
-\BOX{1,0}{TP}{TP}
-
+\BOX{0,0}{TP}{A}{0.6,0.5}{NW}{S}
+\BOX{0.3,-1.4}{TP1}{A}{0.6,0.5}{NW}{S}
+\CONNECTHV{TP_OUTS}{TP1_INN}
 
 \end{tikzpicture}
