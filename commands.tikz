@@ -3,6 +3,7 @@
 \input{circlething.tex}
 \input{box.tex}
 \input{connections.tex}
+\input{circuit.tex}
 
 \newcommand{\FACTOR}[3]
 {

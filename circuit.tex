@@ -18,12 +18,24 @@
 % this program. If not, see <http://www.gnu.org/licenses/>.
 %
 
-\begin{tikzpicture}
-    \RESISTORV{3,0}{R}{R$_1$}
-    \path(R_OUTN) ++ (-0.5,0) coordinate(plus);
-    \path(R_OUTS) ++ (-0.5,0) coordinate(minus);
-    \OPENCONNECTOR{plus}{P};
-    \OPENCONNECTOR{minus}{M};
-    \CONNECT{R_OUTN}{P_E};
-    \CONNECT{R_OUTS}{M_E};
-\end{tikzpicture}
+% arguments
+% #1 coordinates
+% #2 name
+% #3 label
+% resistor in vertical direction with label to the right
+\newcommand{\RESISTORV}[3]
+{
+    \BOX{#1}{#2}{}{0.2,0.6}{}{NS};
+    \draw (#2_OUTE) node[draw=none,fill=none]{ \tiny{#3} };
+}
+
+% arguments
+% #1 coordinates
+% #2 name
+% #3 label
+% resistor in horizontal direction with label above
+\newcommand{\RESISTORH}[3]
+{
+    \BOX{#1}{#2}{}{0.6,0.2}{}{WE};
+    \draw (#2_OUTN) node[draw=none,fill=none]{ \tiny{#3} };
+}
